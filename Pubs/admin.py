@@ -7,7 +7,6 @@ from Pubs.resources import PubResource
 # defining PubAdmin class (useful & necessary for django-import-export module)
 class PubAdmin(ImportExportModelAdmin):
 	list_display = ('id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type')
-	form = PubForm
 	resource_class = PubResource
 	show_change_link = True
 	inlines = [
