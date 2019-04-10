@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils import timezone
 import csv
 from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
+from Pubs.models import Pub
 
 # some validator declarations that I use within the Pub & Trait models
 val_alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Error: only alphanumeric characters are allowed.')
