@@ -3,6 +3,7 @@ from Pubs.models import Pub
 from Traits.models import Trait
 from import_export.admin import ImportExportModelAdmin
 from Pubs.resources import PubResource
+from Traits.admin import TraitInline
 
 # defining PubAdmin class (useful & necessary for django-import-export module)
 class PubAdmin(ImportExportModelAdmin):
