@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'import_export',
+    'Pubs',
+    'Traits',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
