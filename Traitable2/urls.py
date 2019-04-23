@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(
     	'trait-autocomplete/$',
-    	TraitAutocomplete.as_view(),
+    	TraitAutocomplete.as_view(create_field='name'),
     	name='trait-autocomplete',
     ),
 ]
