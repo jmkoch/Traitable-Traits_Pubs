@@ -3,11 +3,14 @@ from Pubs.models import Pub
 from Traits.models import Trait, Person
 from import_export.admin import ImportExportModelAdmin
 from Traits.resources import TraitResource
+from Traits.forms import TraitForm
 
 # defining TraitAdmin class (useful & necessary for django-import-export module)
-class TraitAdmin(ImportExportModelAdmin):
+#class TraitAdmin(ImportExportModelAdmin):
+class TraitAdmin(admin.ModelAdmin):
 	list_display = ('id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference')
 	resource_class = TraitResource
+	form = TraitForm
 	#list_filter = ()
 
 class TraitInline(admin.TabularInline):
