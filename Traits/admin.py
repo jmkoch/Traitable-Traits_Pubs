@@ -9,6 +9,7 @@ from Traits.forms import TraitForm
 #class TraitAdmin(ImportExportModelAdmin):
 class TraitAdmin(admin.ModelAdmin):
 	list_display = ('id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference')
+	list_display_links = ('pub_reference', 'id')
 	resource_class = TraitResource
 	form = TraitForm
 	#list_filter = ()
