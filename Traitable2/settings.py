@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'import_export',
     'Pubs',
     'Traits',
+    'dal',
+    'dal_select2',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
