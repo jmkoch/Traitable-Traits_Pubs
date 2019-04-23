@@ -12,7 +12,8 @@ class TraitAdmin(admin.ModelAdmin):
 	list_display_links = ('pub_reference', 'id')
 	resource_class = TraitResource
 	form = TraitForm
-	#list_filter = ()
+	search_fields = ('genus', 'species')
+	#list_filter = ('created_at', 'created_by')
 
 class TraitInline(admin.TabularInline):
 	model = Trait
