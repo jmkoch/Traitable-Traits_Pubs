@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from Traits.views import TraitAutocomplete
+from Pubs.views import CitekeyAutocomplete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,10 @@ urlpatterns = [
     	'trait-autocomplete/$',
     	TraitAutocomplete.as_view(create_field='name'),
     	name='trait-autocomplete',
+    ),
+    url(
+    	'citekey-autocomplete/$',
+    	CitekeyAutocomplete.as_view(create_field='name'),
+    	name='citekey-autocomplete',
     ),
 ]
