@@ -11,4 +11,3 @@ class TraitForm(forms.ModelForm):
 			'genus': autocomplete.TagSelect2(url='trait-autocomplete')
 			#'genus': autocomplete.TextWidget('GenusAutocomplete')
 		}
-
