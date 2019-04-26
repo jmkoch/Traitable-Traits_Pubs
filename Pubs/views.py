@@ -1,3 +1,15 @@
 from django.shortcuts import render
+from dal import autocomplete
+from Pubs.models import Pub
 
-# Create your views here.
+class CitekeyAutocomplete(autocomplete.Select2QuerySetView):
+	def get_queryset(self):
+		if not self.request.is_authenticated():
+			return Pub.objects.none()
+
+		qs = Pub.objects.all()
+
+		if self.q:
+			qs = qs.filter(name__istartswith=self.q)
+
+		return self.q
