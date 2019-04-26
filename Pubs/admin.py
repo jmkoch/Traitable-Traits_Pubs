@@ -4,11 +4,16 @@ from Traits.models import Trait
 from import_export.admin import ImportExportModelAdmin
 from Pubs.resources import PubResource
 from Traits.admin import TraitInline
+from Pubs.forms import CitekeyForm
 
 # defining PubAdmin class (useful & necessary for django-import-export module)
 class PubAdmin(ImportExportModelAdmin):
 	list_display = ('id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type')
+	list_display_links = ('citekey', 'id')
 	resource_class = PubResource
+	form = CitekeyForm
+	search_fields = ('citekey', 'lastName', 'firstName', 'pub_type')
+	list_filter = ('lastName', 'firstName', 'pub_type')
 	show_change_link = True
 	inlines = [
 		TraitInline,
