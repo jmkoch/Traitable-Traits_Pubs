@@ -16,7 +16,7 @@ class Pub(models.Model):
     lastName = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha], verbose_name = "Author's last name")
     middleName = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha], verbose_name = "Author's middle name")
     firstName = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha], verbose_name = "Author's first name")
-    citekey = models.CharField(max_length=50, unique=True, null=True, validators=[val_alphanumeric]) #null=True, blank=False
+    citekey = models.CharField(max_length=50, unique=True, null=True, validators=[val_alphanumeric])#, verbose_name='name') #null=True, blank=False
     
     # for variables with multiple options, must define said options on one line (in pairs, as below) and the variable on separate line
     PUB_TYPE_CHOICES = (('article', 'article'), ('book','book'))
