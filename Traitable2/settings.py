@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dal',
     'dal_select2',
     'django.contrib.admin',
+    #'adminfilters',
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
