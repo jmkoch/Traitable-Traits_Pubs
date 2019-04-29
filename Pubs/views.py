@@ -4,8 +4,10 @@ from Pubs.models import Pub
 
 class CitekeyAutocomplete(autocomplete.Select2QuerySetView):
 	def get_queryset(self):
-		if not self.request.is_authenticated():
-			return Pub.objects.none()
+		#if not self.request.is_authenticated():
+		#	return Pub.objects.none()
+		if self.request.user.is_authenticated:
+			return Pub.objects.all()
 
 		qs = Pub.objects.all()
 
