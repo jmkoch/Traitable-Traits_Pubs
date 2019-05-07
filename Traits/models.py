@@ -19,7 +19,7 @@ class Trait(models.Model):
     species = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha])
     isi = models.FloatField(blank=True, null=True, validators=[MinValueValidator(0.0, message='Must be a number between 0.0 and 1.0'), MaxValueValidator(1.0, message='Must be a number between 0.0 and 1.0')], verbose_name='Index of Self-Incompatibility')
     
-    FRUIT_TYPE_CHOICES = (('capsule','capsule'), ('CAPSULE', 'CAPSULE'), ('Capsule', 'Capsule'),('berry','berry'), ('Berry', 'Berry'), ('BERRY', 'BERRY')) # check why need doubles 
+    FRUIT_TYPE_CHOICES = (('capsule','capsule'), ('berry','berry')) # ('CAPSULE', 'CAPSULE'), ('Capsule', 'Capsule'),('berry','berry'), ('Berry', 'Berry'), ('BERRY', 'BERRY')) # check why need doubles 
     fruit_type = models.CharField(max_length=50, null=True, blank=True, default='none', choices=FRUIT_TYPE_CHOICES)
 
     class Meta:
@@ -38,6 +38,7 @@ class RestrictedManager(models.Manager):
     def deleted_set(self):
         return super(RestrictedManager, self).get_queryset().filter(safe_deleted=True)
 
+'''
 class Person(models.Model):
     first_names = models.CharField(max_length=100, null=True, blank=True)
     middle_names = models.CharField(max_length=100, null=True, blank=True)
@@ -69,3 +70,4 @@ class Person(models.Model):
         if self.last_names !=None:
             name += " "+ str(self.last_names)
         return name
+'''
