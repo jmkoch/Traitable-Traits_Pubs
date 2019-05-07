@@ -5,6 +5,29 @@ from import_export.admin import ImportExportModelAdmin
 from Traits.resources import TraitResource
 from Traits.forms import TraitForm
 
+class TraitListFilter(admin.SimpleListFilter):
+	title = 'genus'
+	parameter_name = 'genus'
+	related_filter_parameter = 'trait__id__exact'
+
+	def lookups(self, request, model_admin):
+		list_of_questions = []
+		queryset = Trait.objects.order_by('id')
+
+		if self.related_filter_parameter in request.GET:
+			queryset = queryset.filter(id=request.GET[self.related_filter_parameter])
+
+		#for genus in queryset:
+		#	list_of_questions.append(
+		#		(str(genus.id), genus.genus)
+		#	)
+		#return sorted(list_of_questions, key=lambda tp: tp[1])
+
+	def queryset(self, request, queryset):
+		if self.value():
+			return queryset.filter(id = self.value())
+		return queryset
+
 # defining TraitAdmin class (useful & necessary for django-import-export module)
 #class TraitAdmin(ImportExportModelAdmin):
 class TraitAdmin(admin.ModelAdmin):
@@ -13,7 +36,7 @@ class TraitAdmin(admin.ModelAdmin):
 	resource_class = TraitResource
 	form = TraitForm
 	search_fields = ('genus', 'species', 'fruit_type')
-	list_filter = ('fruit_type', 'genus') # play around here later
+	list_filter = ('fruit_type', 'genus', TraitListFilter) # play around here later
 
 class TraitInline(admin.TabularInline):
 	model = Trait
