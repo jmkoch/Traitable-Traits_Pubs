@@ -7,7 +7,7 @@ class TraitForm(forms.ModelForm):
 	class Meta:
 		model = Trait
 		fields = ('__all__')
-		widgets = {
-			'genus': autocomplete.TagSelect2(url='trait-autocomplete')
+		#widgets = {
+		#	'genus': autocomplete.TagSelect2(url='trait-autocomplete')
 			#'genus': autocomplete.TextWidget('GenusAutocomplete')
-		}
+		#}
