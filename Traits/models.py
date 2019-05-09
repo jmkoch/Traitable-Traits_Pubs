@@ -28,6 +28,9 @@ class Trait(models.Model):
     def __str__(self):
         return (str(self.genus)+' '+str(self.species))
 
+    def __unicode__(self):
+        return self.name
+
 class RestrictedManager(models.Manager):
     ''' This manager filters out deleted sets'''
     def get_queryset(self):

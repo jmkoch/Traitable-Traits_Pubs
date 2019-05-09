@@ -15,7 +15,7 @@ from import_export.widgets import ForeignKeyWidget
 class TraitResource(resources.ModelResource):
     pub_reference = fields.Field(
     	column_name = 'pub_reference',
-    	attribute = 'pub_reference',
+ 	    attribute = 'pub_reference',
     	widget = ForeignKeyWidget(Pub, 'citekey')
     )
 
@@ -25,9 +25,9 @@ class TraitResource(resources.ModelResource):
         model = Trait
         clean_model_instances = True
         skip_unchanged = True
-        report_skipped = False
+        report_skipped = True
         fields = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
-        #export_order = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
+        export_order = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
 
     def dehydrate_full_title(self, Trait):
         return '%s genus %s species' (Trait.genus, Trait.species)
@@ -40,11 +40,14 @@ class TraitResource(resources.ModelResource):
         fields = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
 
 # need to fix this; doesn't break but doesn't work; still prints 'Here are the columns you'll import:' and includes bad column (but dosn't upload it)
-        for i in fields:
-        	if i not in fields:
-        		print('We found unrecognized/unexpected data in your csv. Skipping column: '+ str(col_name))
+        #for i in fields:
+        #	if i not in fields:
+        #		print('We found unrecognized/unexpected data in your csv. Skipping column: '+ str(col_name))
         print('Here are the columns you will import:' )
         print(dataset.headers)
+
+    def before_save_instance(self, instance, using_transactions, dry_run):
+        instance.full_clean()
 
     # function to export all trait entries into a csv
     def export_traits_csv(request):
