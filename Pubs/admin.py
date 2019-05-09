@@ -19,7 +19,7 @@ class PubAdmin(ImportExportModelAdmin):
 		TraitInline,
 	] # this inline adds Traits to Pub admin page to allow user to upload pub and trait in parallel
 
-class PubInLine(admin.TabularInline):
+class PubInline(admin.TabularInline):
 	model = Pub
 	show_change_link = True
 	extra = 0

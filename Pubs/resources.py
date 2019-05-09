@@ -30,6 +30,8 @@ class PubResource(resources.ModelResource):
 		if 'id' not in dataset.headers:
 			dataset.insert_col(0, lambda row: "", header='id')
 
+		fields = ['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type']
+
 		print('Here are the columns you will import: ')
 		print(dataset.headers)
 
