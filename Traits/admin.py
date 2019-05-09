@@ -37,6 +37,7 @@ class TraitAdmin(admin.ModelAdmin):
 	form = TraitForm
 	search_fields = ('genus', 'species', 'fruit_type')
 	list_filter = ('fruit_type', 'genus', TraitListFilter) # play around here later
+	show_change_link = True
 
 class TraitInline(admin.TabularInline):
 	model = Trait
