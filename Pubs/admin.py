@@ -12,7 +12,7 @@ class PubAdmin(ImportExportModelAdmin):
 	list_display_links = ('citekey', 'id')
 	resource_class = PubResource
 	form = CitekeyForm
-	search_fields = ('citekey', 'lastName', 'firstName', 'pub_type')
+	search_fields = ('citekey', 'title', 'lastName', 'firstName', 'pub_type')
 	list_filter = ('lastName', 'firstName', 'pub_type')
 	show_change_link = True
 	inlines = [
