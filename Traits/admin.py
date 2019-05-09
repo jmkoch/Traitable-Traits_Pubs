@@ -41,7 +41,7 @@ class TraitAdmin(admin.ModelAdmin):
 class TraitInline(admin.TabularInline):
 	model = Trait
 	show_change_link = True
-	extra = 0
+	extra = 0  # this 
 
 # registering our models - very important step!! if you forget to register a model, it won't show up on admin page.
 admin.site.register(Trait, TraitAdmin)
