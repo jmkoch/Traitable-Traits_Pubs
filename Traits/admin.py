@@ -38,12 +38,13 @@ class TraitInline(admin.TabularInline):
 # defining TraitAdmin class (useful & necessary for django-import-export module)
 #class TraitAdmin(ImportExportModelAdmin):
 class TraitAdmin(admin.ModelAdmin):
+	autocomplete_fields = ['pub_reference'] #makes citekey an autocomplete field within Traits admin
 	list_display = ('id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference')
-	list_display_links = ('pub_reference', 'id')
+	list_display_links = ('pub_reference', 'id')  # makes the citekey linkable on Trait admin interface
 	resource_class = TraitResource
 	form = TraitForm
-	search_fields = ('genus', 'species', 'fruit_type')
-	list_filter = ('fruit_type', 'genus', TraitListFilter) # play around here later
+	search_fields = ('genus', 'species', 'fruit_type') # adds search bar to Traits admin page; can add more fields to search thru
+	list_filter = ('fruit_type', 'genus', TraitListFilter) # adds filter bar to Traits admin page; nested filtering works too
 	show_change_link = True
 
 
