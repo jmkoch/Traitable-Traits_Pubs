@@ -1,7 +1,7 @@
 from django.contrib import admin
 from Pubs.models import Pub
 from Traits.models import Trait
-from import_export.admin import ImportExportModelAdmin
+from import_export.admin import ImportExportModelAdmin, ImportExportMixin, ImportMixin, ExportActionModelAdmin
 from Pubs.resources import PubResource 
 from Traits.admin import TraitInline
 from Pubs.forms import CitekeyForm
@@ -19,10 +19,10 @@ class PubAdmin(ImportExportModelAdmin):
 		TraitInline,
 	] # this inline adds Traits to Pub admin page to allow user to upload pub and trait in parallel
 
-class PubInline(admin.TabularInline):
-	model = Pub
-	show_change_link = True
-	extra = 0
+#class PubInline(admin.TabularInline):
+#	model = Pub
+#	show_change_link = True
+#	extra = 0
 
 # registering our models - very important step!! if you forget to register a model, it won't show up on admin page.
 admin.site.register(Pub, PubAdmin)
