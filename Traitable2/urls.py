@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
 from Traits.views import TraitAutocomplete
 from Pubs.views import CitekeyAutocomplete
@@ -26,6 +26,7 @@ urlpatterns = [
     	TraitAutocomplete.as_view(create_field='name'),
     	name='trait-autocomplete',
     ),
+    path('', include('Traits.urls')),
     url(
     	'citekey-autocomplete/$',
     	CitekeyAutocomplete.as_view(create_field='name'),
