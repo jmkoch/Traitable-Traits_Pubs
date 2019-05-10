@@ -33,7 +33,7 @@ class TraitListFilter(admin.SimpleListFilter):
 class TraitInline(admin.TabularInline):
 	model = Trait
 	show_change_link = True
-	extra = 0  # this 
+	extra = 0  # this removes the blank data rows below; replaces them with 'add trait' option link.
 
 # defining TraitAdmin class (useful & necessary for django-import-export module)
 #class TraitAdmin(ImportExportModelAdmin):
