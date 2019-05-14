@@ -16,20 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from Traits.views import TraitAutocomplete
-from Pubs.views import CitekeyAutocomplete
+#from Traits.views import TraitAutocomplete
+#from Pubs.views import CitekeyAutocomplete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(
-    	'trait-autocomplete/$',
-    	TraitAutocomplete.as_view(create_field='name'),
-    	name='trait-autocomplete',
-    ),
-    path('', include('Traits.urls')),
-    url(
-    	'citekey-autocomplete/$',
-    	CitekeyAutocomplete.as_view(create_field='name'),
-    	name='citekey-autocomplete',
-    ),
+    #url(
+    #	'trait-autocomplete/$',
+    #	TraitAutocomplete.as_view(create_field='name'),
+    #	name='trait-autocomplete',
+   # ),
+#    path('', include('Traits.urls')),
+ #   url(
+  #  	'citekey-autocomplete/$',
+   # 	CitekeyAutocomplete.as_view(create_field='name'),
+    #	name='citekey-autocomplete',
+    #),
 ]

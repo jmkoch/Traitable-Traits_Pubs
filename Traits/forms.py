@@ -7,6 +7,9 @@ class TraitForm(forms.ModelForm):
 	class Meta:
 		model = Trait
 		fields = ('__all__')
+		#widgets = {
+		#	'isi': TextInput(attrs={'placeholder': 'cray'})
+		#}
 
 		#widgets = {
 		#	'genus': autocomplete.TagSelect2(url='trait-autocomplete')
