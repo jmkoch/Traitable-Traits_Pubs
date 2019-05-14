@@ -1,18 +1,19 @@
 from django.contrib import admin
 from Pubs.models import Pub
 from Traits.models import Trait
-from import_export import resources
+#from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from Traits.resources import TraitResource
 from Traits.forms import TraitForm
+#from django.contrib.admin import SimpleListFilter
 
+'''
 class TraitListFilter(admin.SimpleListFilter):
 	title = 'genus'
 	parameter_name = 'genus'
 	related_filter_parameter = 'trait__id__exact'
 
 	def lookups(self, request, model_admin):
-		list_of_questions = []
 		queryset = Trait.objects.order_by('id')
 
 		if self.related_filter_parameter in request.GET:
@@ -28,7 +29,7 @@ class TraitListFilter(admin.SimpleListFilter):
 		if self.value():
 			return queryset.filter(id = self.value())
 		return queryset
-
+'''
 
 class TraitInline(admin.TabularInline):
 	model = Trait
@@ -44,7 +45,8 @@ class TraitAdmin(admin.ModelAdmin):
 	resource_class = TraitResource
 	form = TraitForm
 	search_fields = ('genus', 'species', 'fruit_type') # adds search bar to Traits admin page; can add more fields to search thru
-	list_filter = ('fruit_type', 'genus', TraitListFilter) # adds filter bar to Traits admin page; nested filtering works too
+	#list_filter = ('fruit_type', 'genus', TraitListFilter) # adds filter bar to Traits admin page; nested filtering works too
+	list_filter = ('genus', 'species', 'fruit_type')
 	show_change_link = True
 
 
