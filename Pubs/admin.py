@@ -5,6 +5,8 @@ from import_export.admin import ImportExportModelAdmin, ImportExportMixin, Impor
 from Pubs.resources import PubResource 
 from Traits.admin import TraitInline
 from Pubs.forms import CitekeyForm
+from publications.models.publication import Publication  # import Publication model from publications/models/publication.py
+
 
 # defining PubAdmin class (useful & necessary for django-import-export module)
 class PubAdmin(ImportExportModelAdmin):

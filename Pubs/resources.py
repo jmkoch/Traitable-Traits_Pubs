@@ -6,6 +6,7 @@ from import_export.admin import ImportExportModelAdmin
 from import_export import resources, fields, widgets
 from import_export.fields import Field
 from import_export.widgets import ForeignKeyWidget
+from publications.models.publication import Publication 
 
 # declaring Pub Resource below (resources are required & helpful for django-import-export module)
 # when declaring a model's resource, follow this general setup:

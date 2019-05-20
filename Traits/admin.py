@@ -5,6 +5,7 @@ from Traits.models import Trait
 from import_export.admin import ImportExportModelAdmin, ImportExportMixin, ImportMixin, ExportActionModelAdmin
 from Traits.resources import TraitResource
 from Traits.forms import TraitForm
+from publications.models.publication import Publication 
 
 # defining TraitInLine class (to have trait lines show up in Pub admin)
 class TraitInline(admin.TabularInline):
