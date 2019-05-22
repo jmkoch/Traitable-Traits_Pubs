@@ -10,17 +10,25 @@ except ImportError:
 from publications.models import CustomLink, CustomFile
 
 import publications.admin_views
+from Traits.models import Trait
+
 
 class CustomLinkInline(admin.StackedInline):
 	model = CustomLink
 	extra = 1
 	max_num = 5
+	extra = 0
 
+class TraitInline(admin.TabularInline):
+	model = Trait
+	show_change_link = True
+	extra = 0
 
 class CustomFileInline(admin.StackedInline):
 	model = CustomFile
 	extra = 1
 	max_num = 5
+	extra = 0
 
 
 class PublicationAdmin(admin.ModelAdmin):
@@ -42,10 +50,12 @@ class PublicationAdmin(admin.ModelAdmin):
 		(None, {'fields':
 			('lists',)}),
 	)
-	inlines = [CustomLinkInline, CustomFileInline]
+	inlines = [CustomLinkInline, CustomFileInline, TraitInline]
 
 	def get_urls(self):
 		return [
 				url(r'^import_bibtex/$', publications.admin_views.import_bibtex,
 					name='publications_publication_import_bibtex'),
 			] + super(PublicationAdmin, self).get_urls()
+
+#admin.site.register(TraitInline)
