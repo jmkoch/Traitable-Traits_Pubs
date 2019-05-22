@@ -2,6 +2,8 @@ from dal import autocomplete
 from django import forms
 from django.forms import TextInput
 from Traits.models import Trait
+from publications.models.publication import Publication 
+
 #import autocomplete_light
 
 class TraitForm(forms.ModelForm):

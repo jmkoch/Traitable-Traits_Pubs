@@ -17,7 +17,7 @@ class TraitResource(resources.ModelResource):
     pub_reference = fields.Field(
     	column_name = 'pub_reference',
  	    attribute = 'pub_reference',
-    	widget = ForeignKeyWidget(Pub, 'citekey')
+    	widget = ForeignKeyWidget(Publication, 'citekey') # changed here from Pub to Publication
     )
 
    # pub_reference = fields.Field(column_name = 'pub_reference', attribute = 'pub_reference', widget=widgets.ForeignKeyWidget(Pub, 'citekey'))

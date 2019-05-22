@@ -8,10 +8,10 @@ from Traits.forms import TraitForm
 from publications.models.publication import Publication 
 
 # defining TraitInLine class (to have trait lines show up in Pub admin)
-class TraitInline(admin.TabularInline):
-	model = Trait
-	show_change_link = True
-	extra = 0  # this removes the blank data rows below; replaces them with 'add trait' option link.
+##class TraitInline(admin.TabularInline):
+##	model = Trait
+##	show_change_link = True
+##	extra = 0  # this removes the blank data rows below; replaces them with 'add trait' option link.
 
 # defining TraitAdmin class (useful & necessary for django-import-export module)
 class TraitAdmin(ImportExportModelAdmin):
