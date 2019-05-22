@@ -32,10 +32,10 @@ class CustomFileInline(admin.StackedInline):
 
 
 class PublicationAdmin(admin.ModelAdmin):
-	list_display = ('type', 'first_author', 'title', 'type', 'year', 'journal_or_book_title')
-	list_display_links = ('title',)
+	list_display = ('citekey', 'type', 'first_author', 'title', 'type', 'year', 'journal_or_book_title')
+	list_display_links = ('citekey', 'title',)
 	change_list_template = 'admin/publications/publication_change_list.html'
-	search_fields = ('title', 'journal', 'authors', 'keywords', 'year')
+	search_fields = ('citekey', 'title', 'journal', 'authors', 'keywords', 'year')
 	fieldsets = (
 		(None, {'fields':
 			('type', 'title', 'authors', 'year', 'month')}),
