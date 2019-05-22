@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.shortcuts import get_object_or_404
 from Traits.models import Trait
-from Pubs.models import Pub
+##from Pubs.models import Pub
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources, fields, widgets
 from import_export.fields import Field
@@ -16,22 +16,26 @@ from publications.models.publication import Publication
 class PubResource(resources.ModelResource):
 
 	class Meta:
-		model = Pub
+		##model = Pub
+		model = Publication 
 		clean_model_instances = True
 		skip_unchanged = True  #optional variable that will skip unchanged data imports; DOESNT WORK!!!!
 		report_skipped = True #optional variable that will not report skipped imports; DOESNT WORK!!! 
-		fields = ['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type']
-		export_order = ['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type']
+		##fields = ['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type']
+		fields = ['__all__']
+		##export_order = ['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type']
 
-	def dehydrate_full_pub(self, Pub):
-		return '%s lastName %s firstName' % (Pub.lastName, Pub.firstName)
+	def dehydrate_full_pub(self, Publication):##Pub):
+		##return '%s lastName %s firstName' % (Pub.lastName, Pub.firstName)
+		return '%s title %s authors' % (Publication.title, Publication.authors)
 
 	# The before_import function will pass some tests prior to importing the data.
 	def before_import(self, dataset, using_transactions, dry_run=True, collect_failed_rows=False, **kwargs):
 		if 'id' not in dataset.headers:
 			dataset.insert_col(0, lambda row: "", header='id')
 
-		fields = ['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type']
+		##fields = ['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type']
+		fields = ['__all__']
 
 		print('Here are the columns you will import: ')
 		print(dataset.headers)
@@ -46,9 +50,11 @@ class PubResource(resources.ModelResource):
 		response['Content-Disposition'] = 'attachmnet; filename = "pubs_output.csv"'
 
 		writer = csv.writer(response)
-		writer.writerow(['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type'])
+		##writer.writerow(['id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type'])
+		writer.writerow('__all__')
 
-		pubs = Pub.objects.all().values_list('id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type')
+		##pubs = Pub.objects.all().values_list('id', 'title', 'lastName', 'middleName', 'firstName', 'citekey', 'pub_type')
+		pubs = Publication.objects.all.values_list('__all__')
 
 		for pub in pubs:
 			writer.writerow(pub)
