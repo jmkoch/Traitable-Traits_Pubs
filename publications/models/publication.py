@@ -12,6 +12,8 @@ from django.conf import settings
 from publications.fields import PagesField
 from publications.models import Type, List
 from string import ascii_uppercase
+#from Traits.models import Trait
+
 
 if 'django.contrib.sites' in settings.INSTALLED_APPS:
 	from django.contrib.sites.models import Site
@@ -76,8 +78,7 @@ class Publication(models.Model):
 	note = models.CharField(max_length=256, blank=True)
 	keywords = models.CharField(max_length=256, blank=True,
 		help_text='List of keywords separated by commas.')
-	url = models.URLField(blank=True, verbose_name='URL',
-		help_text='Link to PDF or journal page.')
+	url = models.URLField(blank=True, verbose_name='URL', help_text='Link to PDF or journal page.')
 	code = models.URLField(blank=True,
 		help_text='Link to page with code.')
 	pdf = models.FileField(upload_to='publications/', verbose_name='PDF', blank=True, null=True)
