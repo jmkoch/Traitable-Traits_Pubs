@@ -1,7 +1,5 @@
 # Traitable-Traits_Pubs
-working Traitable version with Traits &amp; Publications as separate apps
-
-This repo hosts Traitable: a django application to host taxonomic plant data published in scientific literature and the associated bibliographic data.
+This repo hosts **Traitable:** a django application to host taxonomic plant data published in scientific literature and the associated bibliographic data.
 
 Within Traitable, there are two components: 
 1) Traits:
