@@ -27,6 +27,9 @@ class TraitResource(resources.ModelResource):
         clean_model_instances = True
         skip_unchanged = True
         report_skipped = True
+        #exclude = ('id', )
+        #import_id_fields = ('pub_reference')
+        #fields = ('__all__')
         fields = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
         export_order = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
 
@@ -37,7 +40,7 @@ class TraitResource(resources.ModelResource):
     def before_import(self, dataset, using_transactions, dry_run=True, collect_failed_rows=False, **kwargs): #raise_errors=True
         if 'id' not in dataset.headers:
             dataset.insert_col(0, lambda row: "", header='id')
-        
+        #fields = ('__all__')
         fields = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
 
 # need to fix this; doesn't break but doesn't work; still prints 'Here are the columns you'll import:' and includes bad column (but dosn't upload it)
