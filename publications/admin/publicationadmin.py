@@ -36,6 +36,7 @@ class PublicationAdmin(admin.ModelAdmin):
 	list_display_links = ('citekey', 'title',)
 	change_list_template = 'admin/publications/publication_change_list.html'
 	search_fields = ('citekey', 'title', 'journal', 'authors', 'keywords', 'year')
+	list_filter = ('title', 'year', 'keywords')
 	fieldsets = (
 		(None, {'fields':
 			('type', 'title', 'authors', 'year', 'month')}),
