@@ -16,13 +16,13 @@ val_numeric = RegexValidator(r'^[0-9]*$', 'Error: only numeric characters are al
 class Trait(models.Model):
    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # in pub_reference below changed from Pub to Publication
-    pub_reference = models.ForeignKey(Publication, blank=True, null=True, on_delete=models.PROTECT, verbose_name='citekey', validators=[val_alphanumeric])#, related_name='name')
-    genus = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha])#help_text= 'Enter data if known. Expects str as input')
+    pub_reference = models.ForeignKey(Publication, blank=True, null=True, on_delete=models.PROTECT, verbose_name='citekey', validators=[val_alphanumeric])
+    genus = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha])
     species = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha])
-    isi = models.FloatField(blank=True, null=True, validators=[MinValueValidator(0.0, message='Must be a number between 0.0 and 1.0'), MaxValueValidator(1.0, message='Must be a number between 0.0 and 1.0')], verbose_name='Index of Self-Incompatibility')
+    isi = models.FloatField(blank=True, null=True, validators=[MinValueValidator(0.0, message='Must be a number between 0.0 and 1.0'), MaxValueValidator(1.0, message='Must be a number between 0.0 and 1.0')])##, verbose_name='Index of Self-Incompatibility')
     
-    FRUIT_TYPE_CHOICES = (('capsule','capsule'), ('berry','berry')) # ('CAPSULE', 'CAPSULE'), ('Capsule', 'Capsule'),('berry','berry'), ('Berry', 'Berry'), ('BERRY', 'BERRY')) # check why need doubles 
-    fruit_type = models.CharField(max_length=50, null=True, blank=True, default='none', choices=FRUIT_TYPE_CHOICES)
+    FRUIT_TYPE_CHOICES = (('capsule','capsule'), ('CAPSULE', 'CAPSULE'), ('Capsule', 'Capsule'),('berry','berry'), ('Berry', 'Berry'), ('BERRY', 'BERRY'))
+    fruit_type = models.CharField(blank=True, null=True, default='none', max_length=50, choices=FRUIT_TYPE_CHOICES)
 
     class Meta:
         verbose_name_plural = "Traits"
@@ -42,37 +42,3 @@ class RestrictedManager(models.Manager):
         return super(RestrictedManager, self).get_queryset()
     def deleted_set(self):
         return super(RestrictedManager, self).get_queryset().filter(safe_deleted=True)
-
-'''
-class Person(models.Model):
-    first_names = models.CharField(max_length=100, null=True, blank=True)
-    middle_names = models.CharField(max_length=100, null=True, blank=True)
-    last_names = models.CharField(max_length=100, null=True, blank=True)
-
-    #flag kept for safe deletion
-    safe_deleted=models.BooleanField(null=False,default=False)
-
-    objects = models.Manager()
-    rmobjects = RestrictedManager()
-
-    def __unicode__(self):
-        name = ''
-        if self.first_names!=None:
-            name += str(self.first_names)
-        if self.middle_names!=None:
-            name += " "+str(self.middle_names)
-        if self.last_names !=None:
-            name += " "+ str(self.last_names)
-        return name
-
-
-    def __str__(self):
-        name = ''
-        if self.first_names!=None:
-            name += str(self.first_names)
-        if self.middle_names!=None:
-            name += " "+str(self.middle_names)
-        if self.last_names !=None:
-            name += " "+ str(self.last_names)
-        return name
-'''
