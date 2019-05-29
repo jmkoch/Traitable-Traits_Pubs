@@ -26,4 +26,4 @@ class PubAdmin(ImportExportModelAdmin):
 
 
 # registering our models - very important step!! if you forget to register a model, it won't show up on admin page.
-admin.site.register(Pub, PubAdmin)
+#admin.site.register(Pub, PubAdmin)
