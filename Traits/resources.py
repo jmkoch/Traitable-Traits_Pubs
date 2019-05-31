@@ -17,7 +17,7 @@ class TraitResource(resources.ModelResource):
     pub_reference = fields.Field(
     	column_name = 'pub_reference',
  	    attribute = 'pub_reference',
-    	widget = ForeignKeyWidget(Publication, 'citekey') # changed here from Pub to Publication
+    	widget = ForeignKeyWidget(Publication, 'citekey')
     )
 
     class Meta:
@@ -25,9 +25,6 @@ class TraitResource(resources.ModelResource):
         clean_model_instances = True
         skip_unchanged = True
         report_skipped = True
-        #exclude = ('id', )
-        #import_id_fields = ('pub_reference')
-        #fields = ('__all__')
         fields = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
         export_order = ['id', 'genus', 'species', 'isi', 'fruit_type', 'pub_reference']
 
@@ -39,10 +36,7 @@ class TraitResource(resources.ModelResource):
         if 'id' not in dataset.headers:
             dataset.insert_col(0, lambda row: "", header='id')
 
-# need to fix this; doesn't break but doesn't work; still prints 'Here are the columns you'll import:' and includes bad column (but dosn't upload it)
-        #for i in fields:
-        #	if i not in fields:
-        #		print('We found unrecognized/unexpected data in your csv. Skipping column: '+ str(col_name))
+# This section needs some improvement / added logic to better clean data
         
         print('Here are the columns you will import:' )
         print(dataset.headers)

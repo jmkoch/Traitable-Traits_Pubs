@@ -4,8 +4,6 @@ from django.forms import TextInput
 from Traits.models import Trait
 from publications.models.publication import Publication 
 
-#import autocomplete_light
-
 class TraitForm(forms.ModelForm):
 	class Meta:
 		model = Trait
@@ -13,8 +11,3 @@ class TraitForm(forms.ModelForm):
 		widgets = {
 			'isi': TextInput(),  # this widget removes the up/down arrows from the Traits isi fields
 		}
-
-		#widgets = {
-		#	'genus': autocomplete.TagSelect2(url='trait-autocomplete')
-			#'genus': autocomplete.TextWidget('GenusAutocomplete')
-		#}

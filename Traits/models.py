@@ -3,19 +3,15 @@ from django.conf import settings
 from django.utils import timezone
 import csv
 from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
-#from Pubs.models import Pub
 from publications.models.publication import Publication 
 
 # some validator declarations that I use within the Pub & Trait models
 val_alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Error: only alphanumeric characters are allowed.')
 val_alpha = RegexValidator(r'^[a-zA-Z]*$', 'Error: only alphabetic characters are allowed.')
 val_numeric = RegexValidator(r'^[0-9]*$', 'Error: only numeric characters are allowed.')
-# add in hyphens to names
 
 # Trait model below; all Trait-related variables declared within it
 class Trait(models.Model):
-   # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # in pub_reference below changed from Pub to Publication
     pub_reference = models.ForeignKey(Publication, blank=True, null=True, on_delete=models.PROTECT, verbose_name='citekey', validators=[val_alphanumeric])
     genus = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha])
     species = models.CharField(max_length=50, null=True, blank=True, validators=[val_alpha])
