@@ -7,3 +7,5 @@ Within Traitable, there are two components:
 
 2) Publications:
  - hosts bibliographic data on publications associated with the data within 'Traits'
+
+For more specific information about Traitable, including how to access it, please see this repository's wiki pages.
